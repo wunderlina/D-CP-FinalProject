@@ -1,5 +1,6 @@
 package state;
 
+import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
@@ -7,12 +8,17 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.file.Path;
 
-public class GuiImage extends GuiElement {
+public class GuiImage {
+    private Point2D anchorPoint;
+    private Point2D relativePosition;
+    private boolean visible;
     private Image[] image;
     private double size;
     private int costume;
-    public GuiImage(Point anchor, Point pos, double size, String[] paths) {
-        super(anchor, pos);
+    public GuiImage(Point2D anchor, Point2D pos, double size, String[] paths) {
+        anchorPoint = anchor;
+        relativePosition = pos;
+        visible = true;
         if(paths == null){
             this.image = null;
         } else {
@@ -33,17 +39,17 @@ public class GuiImage extends GuiElement {
         if(visible){
             double frameWidth = pen.getCanvas().getWidth();
             double frameHeight = pen.getCanvas().getHeight();
-            pen.drawImage(image[costume], frameWidth*anchorPoint.x + (relativePosition.x)*zoom, frameHeight*anchorPoint.y + (relativePosition.y)*zoom, image[costume].getWidth()*size*zoom, image[costume].getHeight()*size*zoom);
+            pen.drawImage(image[costume], frameWidth*anchorPoint.getX() + (relativePosition.getX())*zoom, frameHeight*anchorPoint.getY() + (relativePosition.getY())*zoom, image[costume].getWidth()*size*zoom, image[costume].getHeight()*size*zoom);
         }
     }
     public boolean touchingMouse(GraphicsContext pen, double zoom, UserInput userInput){
         if(visible){
             double frameWidth = pen.getCanvas().getWidth();
             double frameHeight = pen.getCanvas().getHeight();
-            double topBorder = frameHeight*anchorPoint.y + (relativePosition.y)*zoom;
-            double bottomBorder = frameHeight*anchorPoint.y + (relativePosition.y)*zoom + image[costume].getHeight()*size*zoom;
-            double leftBorder = frameWidth*anchorPoint.x + (relativePosition.x)*zoom;
-            double rightBorder = frameWidth*anchorPoint.x + (relativePosition.x)*zoom + image[costume].getWidth()*size*zoom;
+            double topBorder = frameHeight*anchorPoint.getY() + (relativePosition.getY())*zoom;
+            double bottomBorder = frameHeight*anchorPoint.getY() + (relativePosition.getY())*zoom + image[costume].getHeight()*size*zoom;
+            double leftBorder = frameWidth*anchorPoint.getX() + (relativePosition.getX())*zoom;
+            double rightBorder = frameWidth*anchorPoint.getX() + (relativePosition.getX())*zoom + image[costume].getWidth()*size*zoom;
             return userInput.getMouseX() < rightBorder && userInput.getMouseX() > leftBorder && userInput.getMouseY() > topBorder && userInput.getMouseY() < bottomBorder;
         }
         return false;
