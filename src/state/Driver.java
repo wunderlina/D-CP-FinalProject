@@ -14,6 +14,7 @@ public class Driver extends Application {
     private static final double ANGLE_OFFSET = (5*Math.PI/4);
     private static final int WINDOW_WIDTH = 900;
     private static final int WINDOW_HEIGHT = 600;
+    private final String data = "data/";
     private static boolean run = true;
     private static GraphicsContext pen;
     private static UserInput userInput;
@@ -37,12 +38,12 @@ public class Driver extends Application {
         stage.show();
 
         guiElements = new GuiImage[] {
-                new GuiImage(new Point2D(0, 0), new Point2D(100, 100), 1, new String[] {"speed.png"}),
-                new GuiImage(new Point2D(0, 0), new Point2D(600, 100), 1, new String[] {"Gas.png", "GasPressed.png"}),
-                new GuiImage(new Point2D(0, 0), new Point2D(600, 250), 1, new String[] {"GearUp.png", "GearUpPressed.png"}),
-                new GuiImage(new Point2D(0, 0), new Point2D(600, 400), 1, new String[] {"GearDown.png", "GearDownPressed.png"}),
-                new GuiImage(new Point2D(0, 0), new Point2D(240, 385), 1, new String[] {"park.png", "reverse.png", "neutral.png", "low.png", "high.png"}),
-                new GuiImage(new Point2D(0, 0), new Point2D(450, 450), 0.75, new String[] {"keyOff.png", "keyOn.png"})
+                new GuiImage(new Point2D(0, 0), new Point2D(100, 100), 1, new String[] {data + "speed.png"}),
+                new GuiImage(new Point2D(0, 0), new Point2D(600, 100), 1, new String[] {data + "Gas.png", data + "GasPressed.png"}),
+                new GuiImage(new Point2D(0, 0), new Point2D(600, 250), 1, new String[] {data + "GearUp.png", data + "GearUpPressed.png"}),
+                new GuiImage(new Point2D(0, 0), new Point2D(600, 400), 1, new String[] {data + "GearDown.png", data + "GearDownPressed.png"}),
+                new GuiImage(new Point2D(0, 0), new Point2D(240, 385), 1, new String[] {data + "park.png", data + "reverse.png", data + "neutral.png", data + "low.png", data + "high.png"}),
+                new GuiImage(new Point2D(0, 0), new Point2D(450, 450), 0.75, new String[] {data + "keyOff.png", "keyOn.png"})
         };
 
         pen = window.getGraphicsContext2D();
