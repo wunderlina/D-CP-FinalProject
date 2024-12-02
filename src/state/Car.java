@@ -7,7 +7,8 @@ public class Car {
     private UserInput userInput;
 
     public Car(UserInput ui){
-
+        gear = new GearPark();
+        stalled = true;
     }
     public void changeSpeed(int increment){
         speed += increment;
@@ -26,5 +27,8 @@ public class Car {
     }
     public void update(){
 
+    }
+    public int getGear(){
+        return gear.getGear();
     }
 }

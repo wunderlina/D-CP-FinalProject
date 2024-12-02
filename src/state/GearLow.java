@@ -10,4 +10,9 @@ public class GearLow implements Gear {
     public void resolveBehavior(UserInput ui, Car car) {
 
     }
+
+    @Override
+    public int getGear() {
+        return 0;
+    }
 }

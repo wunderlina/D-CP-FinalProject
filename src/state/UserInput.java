@@ -1,10 +1,12 @@
 package state;
 
 import javafx.event.EventHandler;
+import javafx.geometry.Point2D;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 
+import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -49,8 +51,7 @@ public class UserInput {
         root.setOnMouseMoved(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                mouse.position.x = mouseEvent.getX();
-                mouse.position.y = mouseEvent.getY();
+                mouse.position = new Point2D(mouseEvent.getX(), mouseEvent.getY());
             }
         });
         root.setOnMousePressed(new EventHandler<MouseEvent>() {
@@ -91,10 +92,10 @@ public class UserInput {
         return mouse.mouseDown;
     }
     public double getMouseX(){
-        return mouse.position.x;
+        return mouse.position.getX();
     }
     public double getMouseY(){
-        return mouse.position.y;
+        return mouse.position.getY();
     }
     private static class Input {
         private boolean pressed;
@@ -105,10 +106,10 @@ public class UserInput {
         }
     }
     private static class Mouse {
-        private Point position;
+        private Point2D position;
         private boolean mouseDown;
         private Mouse(){
-            position = new Point();
+            position = new Point2D(0,0);
             mouseDown = false;
         }
     }
