@@ -43,7 +43,7 @@ public class Driver extends Application {
                 new GuiImage(new Point2D(0, 0), new Point2D(600, 250), 1, new String[] {data + "GearUp.png", data + "GearUpPressed.png"}),
                 new GuiImage(new Point2D(0, 0), new Point2D(600, 400), 1, new String[] {data + "GearDown.png", data + "GearDownPressed.png"}),
                 new GuiImage(new Point2D(0, 0), new Point2D(240, 385), 1, new String[] {data + "park.png", data + "reverse.png", data + "neutral.png", data + "low.png", data + "high.png"}),
-                new GuiImage(new Point2D(0, 0), new Point2D(450, 450), 0.75, new String[] {data + "keyOff.png", "keyOn.png"})
+                new GuiImage(new Point2D(0, 0), new Point2D(450, 450), 0.75, new String[] {data + "keyOff.png", data + "keyOn.png"})
         };
 
         pen = window.getGraphicsContext2D();
