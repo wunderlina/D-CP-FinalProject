@@ -15,6 +15,7 @@ public class GuiImage {
     private Image[] image;
     private double size;
     private int costume;
+
     public GuiImage(Point2D anchor, Point2D pos, double size, String[] paths) {
         anchorPoint = anchor;
         relativePosition = pos;
@@ -35,6 +36,7 @@ public class GuiImage {
         this.size = size;
         this.costume = 0;
     }
+
     public void render(GraphicsContext pen, double zoom){
         if(visible){
             double frameWidth = pen.getCanvas().getWidth();
@@ -42,6 +44,7 @@ public class GuiImage {
             pen.drawImage(image[costume], frameWidth*anchorPoint.getX() + (relativePosition.getX())*zoom, frameHeight*anchorPoint.getY() + (relativePosition.getY())*zoom, image[costume].getWidth()*size*zoom, image[costume].getHeight()*size*zoom);
         }
     }
+
     public boolean touchingMouse(GraphicsContext pen, double zoom, UserInput userInput){
         if(visible){
             double frameWidth = pen.getCanvas().getWidth();
@@ -54,12 +57,15 @@ public class GuiImage {
         }
         return false;
     }
+
     public void setCostume(int cost){
         costume = cost;
     }
+
     public void setCostumes(Image[] costumes){
         image = costumes;
     }
+
     public int getCostume(){
         return costume;
     }

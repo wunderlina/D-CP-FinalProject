@@ -54,6 +54,7 @@ public class Driver extends Application {
 
         run();
     }
+
     private static void run(){
         Thread displayThread = new Thread(() ->{
             while(run){
@@ -68,6 +69,7 @@ public class Driver extends Application {
         displayThread.start();
         updateThread.start();
     }
+
     private static void display() {
         pen.clearRect(0,0,pen.getCanvas().getWidth(), pen.getCanvas().getHeight());
         for(GuiImage gi : guiElements){
@@ -83,6 +85,7 @@ public class Driver extends Application {
 
         wait(50);
     }
+
     private static void update(){
         if(userInput.getKeyPressed("SPACE")){
             guiElements[1].setCostume(1);
@@ -114,13 +117,15 @@ public class Driver extends Application {
         car.update();
         wait(50);
     }
-    public static void wait(int millis) {
+
+    private static void wait(int millis) {
         try {
             Thread.sleep(millis);
         } catch (InterruptedException e) {
             System.out.println("InterruptedException: "+e);
         }
     }
+
     private static void locatorTool(){
         if(userInput.getMousePressed()){
             double x = userInput.getMouseX();

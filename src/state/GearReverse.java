@@ -1,6 +1,7 @@
 package state;
 
 public class GearReverse implements Gear {
+
     @Override
     public Gear nextGear(UserInput ui) {
         Gear gear = this;

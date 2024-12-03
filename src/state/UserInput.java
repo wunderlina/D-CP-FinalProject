@@ -6,7 +6,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 
-import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,10 +15,12 @@ import java.util.Map;
 public class UserInput {
     private Map<String, Input> keyInput;
     private Mouse mouse;
+
     public UserInput(Pane pane, String[] monitoredKeys){
         keyInput = getKeyInput(pane, monitoredKeys);
         mouse = getMouse(pane);
     }
+
     private Map<String, Input> getKeyInput(Pane root, String[] monitoredKeys){
         Map<String, Input> inputs = new HashMap<>();
         for (String s:monitoredKeys){
@@ -45,6 +46,7 @@ public class UserInput {
         });
         return inputs;
     }
+
     private Mouse getMouse(Pane root){
         Mouse mouse = new Mouse();
         root.requestFocus();
@@ -88,15 +90,19 @@ public class UserInput {
         keyInput.get(key).ready = false;
         return r;
     }
+
     public boolean getMousePressed(){
         return mouse.mouseDown;
     }
+
     public double getMouseX(){
         return mouse.position.getX();
     }
+
     public double getMouseY(){
         return mouse.position.getY();
     }
+
     private static class Input {
         private boolean pressed;
         private boolean ready;
@@ -105,6 +111,7 @@ public class UserInput {
             ready = true;
         }
     }
+
     private static class Mouse {
         private Point2D position;
         private boolean mouseDown;
