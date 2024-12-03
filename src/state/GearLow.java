@@ -17,16 +17,21 @@ public class GearLow implements Gear {
     public void resolveBehavior(UserInput ui, Car car) {
 //max velocity 50
         int currentSpeed = car.getSpeed();
-        if (currentSpeed < 50 && ui.getKeyPressed("SPACE")){
-            car.changeSpeed(8);
-        }
-        else {
-            car.changeSpeed(-3);
+        if(!car.getStalled() && ui.getKeyPressed("SPACE")){
+            if(car.getSpeed() < 50){
+                car.changeSpeed(2);
+            } else {
+                car.changeSpeed(-1*car.getSpeed()/Math.abs(car.getSpeed()));
+            }
+        } else {
+            if(car.getSpeed() != 0){
+                car.changeSpeed(-1*car.getSpeed()/Math.abs(car.getSpeed()));
+            }
         }
     }
 
     @Override
     public int getGear() {
-        return 0;
+        return 3;
     }
 }

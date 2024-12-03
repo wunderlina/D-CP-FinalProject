@@ -16,7 +16,9 @@ public class GearNeutral implements Gear {
 
     @Override
     public void resolveBehavior(UserInput ui, Car car) {
-        car.changeSpeed(-1*car.getSpeed()/Math.abs(car.getSpeed()));
+        if(car.getSpeed() != 0){
+            car.changeSpeed(-1*car.getSpeed()/Math.abs(car.getSpeed()));
+        }
     }
 
     @Override

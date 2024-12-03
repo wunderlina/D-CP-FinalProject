@@ -14,22 +14,22 @@ public class GearHigh implements Gear {
     public void resolveBehavior(UserInput ui, Car car) {
 //stall when speed below 40
         int currentSpeed = car.getSpeed();
-        if (currentSpeed < 40) {
-            car.setStalled(true);
-            car.changeSpeed((int) (car.getSpeed()*0.8));
-        }
-        else if (currentSpeed < 200){
-            if ( ui.getKeyPressed("SPACE")){
-                car.changeSpeed(10);
+        if(ui.getKeyPressed("SPACE") && !car.getStalled()){
+            if (currentSpeed < 40) {
+                car.setStalled(true);
             }
-            else {
-                car.changeSpeed(-5);
+            if (currentSpeed < 200){
+                car.changeSpeed(2);
+            }
+        } else {
+            if(car.getSpeed() != 0){
+                car.changeSpeed(-1*car.getSpeed()/Math.abs(car.getSpeed()));
             }
         }
     }
 
     @Override
     public int getGear() {
-        return 0;
+        return 4;
     }
 }
