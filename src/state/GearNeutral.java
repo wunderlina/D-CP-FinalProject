@@ -1,9 +1,17 @@
 package state;
 
 public class GearNeutral implements Gear {
+
     @Override
     public Gear nextGear(UserInput ui) {
-        return null;
+        Gear gear = this;
+        if (ui.checkTapped("UP")) {
+            gear = new GearLow();
+        }
+        if (ui.checkTapped("DOWN")) {
+            gear = new GearReverse();
+        }
+        return gear;
     }
 
     @Override
@@ -13,6 +21,6 @@ public class GearNeutral implements Gear {
 
     @Override
     public int getGear() {
-        return 0;
+        return 2;
     }
 }
