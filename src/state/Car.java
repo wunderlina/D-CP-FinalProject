@@ -23,10 +23,11 @@ public class Car {
         return stalled;
     }
     private void shiftGears(){
-
+        this.gear = gear.nextGear(userInput);
     }
     public void update(){
-
+        gear.resolveBehavior(userInput, this);
+        shiftGears();
     }
     public int getGear(){
         return gear.getGear();
