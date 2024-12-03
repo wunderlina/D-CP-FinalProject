@@ -3,12 +3,23 @@ package state;
 public class GearReverse implements Gear {
     @Override
     public Gear nextGear(UserInput ui) {
-        return this;
+        Gear gear = this;
+        if (ui.checkTapped("UP")) {
+            gear = new GearNeutral();
+        }
+        if (ui.checkTapped("DOWN")) {
+            gear = new GearPark();
+        }
+        return gear;
     }
 
     @Override
     public void resolveBehavior(UserInput ui, Car car) {
-        car.changeSpeed(-1);
+        if(!car.getStalled() && ui.getKeyPressed("SPACE")){
+            car.changeSpeed(-1);
+        } else if (car.getSpeed() != 0) {
+            car.changeSpeed(-1*car.getSpeed()/Math.abs(car.getSpeed()));
+        }
     }
 
     @Override
