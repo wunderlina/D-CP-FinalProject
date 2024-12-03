@@ -14,8 +14,10 @@ public class GearPark implements Gear {
     @Override
     public void resolveBehavior(UserInput ui, Car car) {
         int currentSpeed = car.getSpeed();
-        if (currentSpeed > 0) {
-            car.changeSpeed(--currentSpeed);
+        if (currentSpeed < 10) {
+            car.changeSpeed(-1*currentSpeed);
+        } else {
+            car.changeSpeed(-10);
         }
     }
 

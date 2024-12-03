@@ -74,7 +74,7 @@ public class Driver extends Application {
             gi.render(pen,1);
         }
 
-        double angle = car.getSpeed()*DEGREE_SPEED_RATIO - ANGLE_OFFSET;
+        double angle = Math.abs(car.getSpeed())*DEGREE_SPEED_RATIO - ANGLE_OFFSET;
         double length = 150;
 
         pen.setLineWidth(3);
