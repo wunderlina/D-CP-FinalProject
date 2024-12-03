@@ -18,7 +18,7 @@ public class GearLow implements Gear {
 //max velocity 50
         int currentSpeed = car.getSpeed();
         if (currentSpeed < 50 && ui.getKeyPressed("SPACE")){
-            car.changeSpeed(2);
+            car.changeSpeed(1);
         }
         else {
             car.changeSpeed(-1);

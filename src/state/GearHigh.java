@@ -16,15 +16,17 @@ public class GearHigh implements Gear {
         int currentSpeed = car.getSpeed();
         if (currentSpeed < 40) {
             car.setStalled(true);
-            car.changeSpeed((int) (-1*car.getSpeed()*0.3));
+            car.changeSpeed((int) (-1*car.getSpeed()*0.1));
+            if (currentSpeed <= 1){
+                car.changeSpeed(-1*currentSpeed);
+                car.setStalled(false);
+            }
         }
-        else if (currentSpeed < 200){
-            if ( ui.getKeyPressed("SPACE")){
-                car.changeSpeed(4);
-            }
-            else {
-                car.changeSpeed(-2);
-            }
+        else if (currentSpeed < 200 && ui.getKeyPressed("SPACE")) {
+            car.changeSpeed(2);
+        }
+        else {
+            car.changeSpeed(-1);
         }
     }
 
