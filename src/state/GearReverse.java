@@ -17,7 +17,9 @@ public class GearReverse implements Gear {
     @Override
     public void resolveBehavior(UserInput ui, Car car) {
         if(!car.getStalled() && ui.getKeyPressed("SPACE")){
-            car.changeSpeed(-1);
+            if(car.getSpeed() > -30){
+                car.changeSpeed(-1);
+            }
         } else if (car.getSpeed() != 0) {
             car.changeSpeed(-1*car.getSpeed()/Math.abs(car.getSpeed()));
         }
