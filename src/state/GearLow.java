@@ -5,6 +5,7 @@ public class GearLow implements Gear {
     public Gear nextGear(UserInput ui) {
         Gear gear = this;
         if (ui.checkTapped("UP")) {
+
             gear = new GearHigh();
         }
         if (ui.checkTapped("DOWN")) {
@@ -15,10 +16,10 @@ public class GearLow implements Gear {
 
     @Override
     public void resolveBehavior(UserInput ui, Car car) {
-//max velocity 50
+//max velocity 60
         int currentSpeed = car.getSpeed();
         if(!car.getStalled() && ui.getKeyPressed("SPACE")){
-            if(car.getSpeed() < 50){
+            if(car.getSpeed() < 60){
                 car.changeSpeed(2);
             } else {
                 car.changeSpeed(-1*car.getSpeed()/Math.abs(car.getSpeed()));

@@ -15,7 +15,7 @@ public class GearHigh implements Gear {
 //stall when speed below 40
         int currentSpeed = car.getSpeed();
         if(ui.getKeyPressed("SPACE") && !car.getStalled()){
-            if (currentSpeed < 40) {
+            if (currentSpeed < 30) {
                 car.setStalled(true);
             }
             if (currentSpeed < 200){
